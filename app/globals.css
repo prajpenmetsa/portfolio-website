@@ -64,8 +64,13 @@ body {
 }
 
 @keyframes stardust-twinkle {
-  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.5) rotate(180deg); }
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.4); }
+}
+
+@keyframes stardust-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
 @keyframes stardust-collect {

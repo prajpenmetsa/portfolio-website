@@ -22,7 +22,7 @@ export default function StardustCounter() {
             letterSpacing: "0.25em",
             color: MILESTONE_COLORS[milestone],
             filter: `drop-shadow(0 0 6px ${MILESTONE_COLORS[milestone]})`,
-            animation: "stardust-twinkle 2s ease-in-out infinite",
+            animation: "stardust-pulse 2s ease-in-out infinite",
           }}
         >
           {MILESTONE_LABELS[milestone]} unlocked
@@ -55,7 +55,7 @@ export default function StardustCounter() {
                         color: filled ? groupColor : "rgba(255,255,255,0.15)",
                         filter: filled ? `drop-shadow(0 0 5px ${groupColor})` : "none",
                         animation: filled && count >= (group + 1) * 5
-                          ? "stardust-twinkle 1.5s ease-in-out infinite"
+                          ? "stardust-pulse 1.5s ease-in-out infinite"
                           : "none",
                         animationDelay: `${i * 0.12}s`,
                       }}
