@@ -77,7 +77,7 @@ export function StardustProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (count >= 15) {
       setShowShower(true);
-      setTimeout(() => setShowShower(false), 5000);
+      setTimeout(() => setShowShower(false), 6500);
     }
   }, [count]);
 

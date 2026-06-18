@@ -22,8 +22,8 @@ function StarShower() {
     Array.from({ length: 70 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
-      delay: Math.random() * 1.5,
-      duration: 3 + Math.random() * 3,
+      delay: Math.random() * 1.2,
+      duration: 3.5 + Math.random() * 1.5,
       size: 14 + Math.random() * 18,
       color: COSMIC[i % COSMIC.length],
       char: CHARS[i % CHARS.length],
@@ -35,7 +35,8 @@ function StarShower() {
       <style>{`
         @keyframes sf-fall {
           0%   { transform: translateY(-60px) rotate(0deg);   opacity: 1; }
-          100% { transform: translateY(110vh) rotate(720deg); opacity: 0.3; }
+          85%  { opacity: 1; }
+          100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
         }
       `}</style>
       <div
@@ -56,7 +57,7 @@ function StarShower() {
               fontSize: s.size,
               color: s.color,
               filter: `drop-shadow(0 0 8px ${s.color}) drop-shadow(0 0 16px ${s.color})`,
-              animation: `sf-fall ${s.duration}s ${s.delay}s infinite ease-in`,
+              animation: `sf-fall ${s.duration}s ${s.delay}s ease-in forwards`,
             }}
           >
             {s.char}
