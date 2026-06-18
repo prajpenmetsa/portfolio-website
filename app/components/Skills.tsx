@@ -6,16 +6,12 @@ const categories = [
     items: ["Python", "C", "C++", "Java", "JavaScript", "SQL", "Bash", "R", "HTML", "CSS"],
   },
   {
-    label: "ML / AI",
-    items: ["PyTorch", "Transformers", "LoRA", "BERT", "BART", "Longformer", "scikit-learn", "Stable-Baselines3", "Gemini", "LLMs", "Reinforcement Learning (PPO)", "GNNs", "RLHF / GRPO", "Prompt Engineering", "Mechanistic Interpretability", "Causal Analysis", "Event Graphs"],
+    label: "Applications",
+    items: ["PyTorch", "scikit-learn", "Stable-Baselines3", "HuggingFace Transformers", "BERT", "BART", "Longformer", "Gemini", "React.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Flask", "Next.js", "Streamlit", "Docker", "Git", "GitHub"],
   },
   {
-    label: "Full Stack & Infra",
-    items: ["React.js", "Node.js", "Express.js", "MERN", "MongoDB", "PostgreSQL", "Flask", "Next.js", "Streamlit", "Docker", "JWT", "Linux", "Socket Programming"],
-  },
-  {
-    label: "Engineering Practices",
-    items: ["API Design", "System Design", "Modular Architecture", "Data Pipelines", "Graph-Based Modeling", "Evaluation", "Benchmarking", "Statistical Methods", "Mixed-Effects Modeling", "Rule-Based Systems", "Technical Writing", "Agile Workflows"],
+    label: "Fields",
+    items: ["Machine Learning", "Natural Language Processing", "Reinforcement Learning", "Mechanistic Interpretability", "Graph Neural Networks", "LoRA Fine-Tuning", "RLHF / GRPO", "Prompt Engineering", "Causal Analysis", "Event Graph Modeling", "System Design", "API Design", "Modular Architecture", "Data Pipelines", "Socket Programming & Networking", "Linux / OS", "Statistical Methods", "Mixed-Effects Modeling", "Rule-Based Systems", "Technical Writing", "Agile Workflows"],
   },
 ];
 

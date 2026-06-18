@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import { useStardust } from "./StardustContext";
 
 const MILESTONE_LABELS = ["shooting star", "cosmic mode", "stardust mastery"];
@@ -9,23 +10,32 @@ export default function StardustCounter() {
   const milestone = count >= 15 ? 2 : count >= 10 ? 1 : count >= 5 ? 0 : -1;
   const uncollected = particles.filter((p) => !p.collected).length;
 
+  const [celebrating, setCelebrating] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (milestone < 0) return;
+    setCelebrating(milestone);
+    const timeout = setTimeout(() => setCelebrating(null), 3000);
+    return () => clearTimeout(timeout);
+  }, [milestone]);
+
   return (
     <div
       className="fixed z-50 flex flex-col items-center gap-1.5"
       style={{ bottom: 24, left: "50%", transform: "translateX(-50%)" }}
     >
-      {milestone >= 0 && (
+      {celebrating !== null && (
         <span
           className="font-mono uppercase"
           style={{
             fontSize: 8,
             letterSpacing: "0.25em",
-            color: MILESTONE_COLORS[milestone],
-            filter: `drop-shadow(0 0 6px ${MILESTONE_COLORS[milestone]})`,
+            color: MILESTONE_COLORS[celebrating],
+            filter: `drop-shadow(0 0 6px ${MILESTONE_COLORS[celebrating]})`,
             animation: "stardust-pulse 2s ease-in-out infinite",
           }}
         >
-          {MILESTONE_LABELS[milestone]} unlocked
+          {MILESTONE_LABELS[celebrating]} unlocked
         </span>
       )}
 
@@ -54,7 +64,7 @@ export default function StardustCounter() {
                         transition: "all 0.4s",
                         color: filled ? groupColor : "rgba(255,255,255,0.15)",
                         filter: filled ? `drop-shadow(0 0 5px ${groupColor})` : "none",
-                        animation: filled && count >= (group + 1) * 5
+                        animation: celebrating === group
                           ? "stardust-pulse 1.5s ease-in-out infinite"
                           : "none",
                         animationDelay: `${i * 0.12}s`,
