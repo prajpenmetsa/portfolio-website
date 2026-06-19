@@ -51,7 +51,7 @@ export default function Hero() {
             </span>
           </div>
           <p className="font-sans text-lg text-[#555] max-w-lg leading-relaxed">
-            CS + Computational Linguistics at IIIT Hyderabad, undergraduate researcher at iREL Lab.
+            CS + Computational Linguistics at IIIT Hyderabad. Undergraduate Researcher at Information Retrieval and Extraction Lab.
           </p>
         </div>
 
