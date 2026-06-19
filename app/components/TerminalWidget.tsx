@@ -4,9 +4,9 @@ import { useState, useRef, useEffect } from "react";
 const COMMANDS: Record<string, string> = {
   help: "Available: about, skills, projects, research, contact, clear",
   about: "Prajna Penmetsa — CS + CompLing @ IIIT Hyderabad. Researcher at iREL Lab (Prof. Vasudeva Varma). Grew up in Denmark, Singapore, and the USA.",
-  skills: "Python · C/C++ · PyTorch · Transformers · LoRA · React.js · MERN · Flask · Next.js · Gemini · MuRIL · XLM-RoBERTa · Docker",
-  projects: "1. Deep RL Portfolio Optimizer — +4.05% alpha over S&P 500\n2. Clinical Disease Diagnosis — 82.3% accuracy, BERT+LoRA\n3. DriverPulse — live deploy, Uber Hackathon\n4. Buy Sell Rent — MERN + Gemini AI chatbot\n5. WordNet Expansion — 7.5K+ Hindi relations inferred\n6. Travel Itinerary Pitcher — Gemini + Foursquare, Streamlit\n7. C Shell & Distributed FS — POSIX + fault-tolerant DFS",
-  research: "1. CurioChain — Socratic math tutor, under review EMNLP 2026\n2. LO-RM — GRPO reward model for pedagogical quality (ongoing)\n3. Media Bias Detection — dual-view event graphs + GNNs",
+  skills: "Languages: Python, C, C++, Java, JavaScript, SQL, Bash, R, HTML, CSS\nApplications: PyTorch, Longformer, Gemini, React.js, Node.js, Express.js, MongoDB, PostgreSQL, Flask, Next.js, Streamlit, Docker, GitHub\nFields: Machine Learning, NLP, Reinforcement Learning, Mechanistic Interpretability, GNNs, LoRA Fine-Tuning, RLHF/GRPO, System Design, API Design, Modular Architecture, Data Pipelines, Socket Programming, Linux/OS, Mixed-Effects Modeling, Rule-Based Systems, Technical Writing, Agile Workflows",
+  projects: "AI/ML Research: SAM3 Color-Binding Failures, Deep RL Portfolio Optimizer, Clinical Disease Diagnosis, Subtle Media Bias Detection\nLinguistics: WordNet Expansion, Lossy-Context Surprisal & Eye Movement\nSystems: C Shell, Distributed Network File System\nFull Stack / Product: Buy Sell Rent, Travel Itinerary Pitcher, DriverPulse, PlatePulse\nCivic Tech: Traffic Management Dashboard, Maternal Nutrition Planning Platform",
+  research: "1. CurioChain — Socratic math tutor, under review EMNLP 2026\n2. LO-RM — GRPO reward model for pedagogical quality (ongoing)\n3. Subtle Media Bias Detection — dual-view event graphs + GNNs",
   contact: "Email: prajnapenmetsa@gmail.com | LinkedIn: /in/prajnapenmetsa | GitHub: prajpenmetsa",
   clear: "__clear__",
 };

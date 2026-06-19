@@ -3,92 +3,106 @@
 const categories = [
   {
     label: "Languages",
+    color: "#fbbf24",
     items: ["Python", "C", "C++", "Java", "JavaScript", "SQL", "Bash", "R", "HTML", "CSS"],
   },
   {
     label: "Applications",
-    items: ["PyTorch", "scikit-learn", "Stable-Baselines3", "HuggingFace Transformers", "BERT", "BART", "Longformer", "Gemini", "React.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Flask", "Next.js", "Streamlit", "Docker", "Git", "GitHub"],
+    color: "#34d399",
+    items: ["PyTorch", "Longformer", "Gemini", "React.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Flask", "Next.js", "Streamlit", "Docker", "GitHub"],
   },
   {
     label: "Fields",
-    items: ["Machine Learning", "Natural Language Processing", "Reinforcement Learning", "Mechanistic Interpretability", "Graph Neural Networks", "LoRA Fine-Tuning", "RLHF / GRPO", "Prompt Engineering", "Causal Analysis", "Event Graph Modeling", "System Design", "API Design", "Modular Architecture", "Data Pipelines", "Socket Programming & Networking", "Linux / OS", "Statistical Methods", "Mixed-Effects Modeling", "Rule-Based Systems", "Technical Writing", "Agile Workflows"],
+    color: "#818cf8",
+    items: ["Machine Learning", "Natural Language Processing", "Reinforcement Learning", "Mechanistic Interpretability", "Graph Neural Networks", "LoRA Fine-Tuning", "RLHF / GRPO", "System Design", "API Design", "Modular Architecture", "Data Pipelines", "Socket Programming & Networking", "Linux / OS", "Mixed-Effects Modeling", "Rule-Based Systems", "Technical Writing", "Agile Workflows"],
   },
 ];
 
-const radarData = [
-  { label: "NLP / LLMs", value: 95 },
-  { label: "ML Engineering", value: 88 },
-  { label: "Systems / OS", value: 80 },
-  { label: "Full Stack", value: 82 },
-  { label: "Research", value: 93 },
-  { label: "Multilingual AI", value: 90 },
-];
-
-function RadarChart() {
-  const size = 220;
+function OrbitDiagram() {
+  const size = 280;
   const cx = size / 2;
   const cy = size / 2;
-  const r = 80;
-  const n = radarData.length;
-
-  const angle = (i: number) => (Math.PI * 2 * i) / n - Math.PI / 2;
-  const pt = (i: number, radius: number) => ({
-    x: cx + radius * Math.cos(angle(i)),
-    y: cy + radius * Math.sin(angle(i)),
-  });
-
-  const gridLevels = [0.25, 0.5, 0.75, 1];
-  const dataPath =
-    radarData
-      .map((d, i) => {
-        const { x, y } = pt(i, (d.value / 100) * r);
-        return `${i === 0 ? "M" : "L"}${x},${y}`;
-      })
-      .join(" ") + "Z";
+  const orbitRadii = [60, 95, 130];
+  const orbitDurations = [38, 56, 80];
 
   return (
-    <svg width={size} height={size} className="overflow-visible">
-      {gridLevels.map((level) => (
-        <polygon
-          key={level}
-          points={radarData
-            .map((_, i) => {
-              const { x, y } = pt(i, level * r);
-              return `${x},${y}`;
-            })
-            .join(" ")}
-          fill="none"
-          stroke="#E0DED9"
-          strokeWidth="1"
-        />
+    <div className="relative" style={{ width: size, height: size }}>
+      <style>{`
+        @keyframes orbit-spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes orbit-spin-rev {
+          from { transform: rotate(360deg); }
+          to { transform: rotate(0deg); }
+        }
+      `}</style>
+      <svg width={size} height={size} className="absolute inset-0">
+        {/* Orbit rings */}
+        {orbitRadii.map((r, i) => (
+          <circle
+            key={r}
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill="none"
+            stroke={categories[i].color}
+            strokeOpacity={0.15}
+            strokeWidth={1}
+          />
+        ))}
+        {/* Core */}
+        <circle cx={cx} cy={cy} r={6} fill="#111" />
+        <circle cx={cx} cy={cy} r={10} fill="#111" opacity={0.15} />
+      </svg>
+
+      {categories.map((cat, ci) => (
+        <div
+          key={cat.label}
+          className="absolute inset-0"
+          style={{
+            transformOrigin: `${cx}px ${cy}px`,
+            animation: `${ci % 2 === 0 ? "orbit-spin" : "orbit-spin-rev"} ${orbitDurations[ci]}s linear infinite`,
+          }}
+        >
+          {cat.items.map((item, ii) => {
+            const angle = (Math.PI * 2 * ii) / cat.items.length;
+            const r = orbitRadii[ci];
+            const x = cx + r * Math.cos(angle);
+            const y = cy + r * Math.sin(angle);
+            return (
+              <div
+                key={item}
+                title={item}
+                className="absolute rounded-full"
+                style={{
+                  left: x,
+                  top: y,
+                  width: 6,
+                  height: 6,
+                  background: cat.color,
+                  transform: "translate(-50%, -50%)",
+                  boxShadow: `0 0 6px ${cat.color}`,
+                }}
+              />
+            );
+          })}
+        </div>
       ))}
-      {radarData.map((_, i) => {
-        const { x, y } = pt(i, r);
-        return <line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke="#E0DED9" strokeWidth="1" />;
-      })}
-      <path d={dataPath} fill="#111" fillOpacity="0.08" stroke="#111" strokeWidth="1.5" />
-      {radarData.map((d, i) => {
-        const { x, y } = pt(i, (d.value / 100) * r);
-        return <circle key={i} cx={x} cy={y} r="3" fill="#111" />;
-      })}
-      {radarData.map((d, i) => {
-        const { x, y } = pt(i, r + 24);
-        return (
-          <text
-            key={i}
-            x={x}
-            y={y}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fontSize="9"
-            fill="#888"
-            style={{ fontFamily: "var(--font-mono)" }}
-          >
-            {d.label}
-          </text>
-        );
-      })}
-    </svg>
+
+      {/* Legend */}
+      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex gap-4">
+        {categories.map((cat) => (
+          <div key={cat.label} className="flex items-center gap-1.5">
+            <span
+              className="block rounded-full"
+              style={{ width: 6, height: 6, background: cat.color, boxShadow: `0 0 4px ${cat.color}` }}
+            />
+            <span className="font-mono text-[9px] tracking-widest uppercase text-[#888]">{cat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -117,8 +131,8 @@ export default function Skills() {
           ))}
         </div>
 
-        <div className="flex flex-col items-center">
-          <RadarChart />
+        <div className="flex flex-col items-center justify-center h-full pt-8">
+          <OrbitDiagram />
         </div>
       </div>
     </section>
