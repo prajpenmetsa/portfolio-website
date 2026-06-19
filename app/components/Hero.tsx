@@ -51,9 +51,7 @@ export default function Hero() {
             </span>
           </div>
           <p className="font-sans text-lg text-[#555] max-w-lg leading-relaxed">
-            Endlessly curious about why language models work the way they do,
-            and always chasing the next hard problem. CS + Computational
-            Linguistics at IIIT Hyderabad, undergraduate researcher at iREL Lab.
+            CS + Computational Linguistics at IIIT Hyderabad, undergraduate researcher at iREL Lab.
           </p>
         </div>
 
