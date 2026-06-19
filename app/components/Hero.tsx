@@ -51,9 +51,9 @@ export default function Hero() {
             </span>
           </div>
           <p className="font-sans text-lg text-[#555] max-w-lg leading-relaxed">
-            CS + Computational Linguistics at IIIT Hyderabad. Researcher at iREL Lab.
-            I build at the intersection of NLP, ML systems, and human-centered AI,
-            from tutoring agents to multilingual models to full-stack products.
+            Endlessly curious about why language models work the way they do,
+            and always chasing the next hard problem. CS + Computational
+            Linguistics at IIIT Hyderabad, undergraduate researcher at iREL Lab.
           </p>
         </div>
 
