@@ -13,11 +13,13 @@ const COMMANDS: Record<string, string> = {
 
 type Line = { type: "input" | "output"; text: string };
 
+const INITIAL_LINES: Line[] = [
+  { type: "output", text: "Available commands:" },
+  { type: "output", text: "about · skills · projects · research · contact · clear" },
+];
+
 export default function TerminalWidget() {
-  const [lines, setLines] = useState<Line[]>([
-    { type: "output", text: "Available commands:" },
-    { type: "output", text: "about · skills · projects · research · contact · clear" },
-  ]);
+  const [lines, setLines] = useState<Line[]>(INITIAL_LINES);
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>([]);
   const [histIdx, setHistIdx] = useState(-1);
@@ -35,7 +37,7 @@ export default function TerminalWidget() {
     if (!trimmed) return;
     const result = COMMANDS[trimmed];
     if (result === "__clear__") {
-      setLines([]);
+      setLines(INITIAL_LINES);
     } else {
       const output = result ?? `not found: "${trimmed}". Try "help".`;
       setLines((l) => [

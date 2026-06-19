@@ -91,7 +91,7 @@ function OrbitDiagram() {
       ))}
 
       {/* Legend */}
-      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex gap-4">
+      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-4">
         {categories.map((cat) => (
           <div key={cat.label} className="flex items-center gap-1.5">
             <span
@@ -131,7 +131,7 @@ export default function Skills() {
           ))}
         </div>
 
-        <div className="flex flex-col items-center justify-center h-full pt-8">
+        <div className="flex flex-col items-center justify-center h-full pb-8">
           <OrbitDiagram />
         </div>
       </div>

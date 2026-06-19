@@ -55,20 +55,6 @@ export default function Hero() {
             I build at the intersection of NLP, ML systems, and human-centered AI,
             from tutoring agents to multilingual models to full-stack products.
           </p>
-          <div className="flex gap-4 pt-2">
-            <a
-              href="#projects"
-              className="font-mono text-xs tracking-[0.15em] uppercase bg-[#111] text-[#F8F7F4] px-7 py-3.5 hover:bg-[#333] transition-colors"
-            >
-              View Work
-            </a>
-            <a
-              href="#contact"
-              className="font-mono text-xs tracking-[0.15em] uppercase border border-[#111] px-7 py-3.5 hover:bg-[#111] hover:text-[#F8F7F4] transition-all"
-            >
-              Get in Touch
-            </a>
-          </div>
         </div>
 
         {/* RIGHT */}
